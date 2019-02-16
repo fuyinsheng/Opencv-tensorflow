@@ -1,0 +1,11 @@
+import tensorflow as tf
+data1 = tf.constant(10)
+data2 = tf.Variable(20, dtype=tf.int32,name='b')
+dataAdd = tf.add(data1,data2)
+dataCopy = tf.assign(data2,dataAdd)
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    sess.run(init)
+    print('dataCopy',sess.run(dataCopy))
+    print('dataCopy.eval()',dataCopy.eval())
+    print('getdeaultsession.run',tf.get_default_session().run(dataCopy))
