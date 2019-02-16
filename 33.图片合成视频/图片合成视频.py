@@ -7,19 +7,18 @@ Created on Sun Feb 10 09:56:47 2019
 """
 import cv2
 def main():
-    cap = cv2.VideoCapture("1.mp4")
-    isopened = cap.isOpened
-    print(isopened)
-    fps = cap.get(cv2.CAP_PROP_FPS)
-    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-    print(fps, height, width)
-    for i in  range(10):
-        fileName = 'img' + str(i) + ".jpg"
-        (flag, frame) = cap.read()
-        if flag == True:
-            cv2.imwrite(fileName, frame, [cv2.IMWRITE_JPEG_QUALITY, 100])
-            
+
+    img = cv2.imread("img0.jpg", 1)
+    size = (img.shape[0], img.shape[1])
+    print(size)    
+    videoWrite = cv2.VideoWriter("2.mp4", -1, 5, size)
+    for i in range(0, 10):
+        print(i)
+        filename = "img" + str(i) + ".jpg"
+        img = cv2.imread(filename)
+        #cv2.imshow(str(i), img)
+        videoWrite.write(img)
+    cv2.waitKey(0)
 if __name__ == "__main__":
     main()
     

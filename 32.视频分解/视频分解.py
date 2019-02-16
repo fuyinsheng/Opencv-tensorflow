@@ -19,7 +19,7 @@ def main():
         (flag, frame) = cap.read()
         if flag == True:
             cv2.imwrite(fileName, frame, [cv2.IMWRITE_JPEG_QUALITY, 100])
-            
+    print("end")
 if __name__ == "__main__":
     main()
     
